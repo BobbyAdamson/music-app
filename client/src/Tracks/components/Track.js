@@ -2,7 +2,6 @@ import React from 'react'
 import Player from './Player'
 
 const Track = props => {
-
 	return (
 		<div className="trackFile container-fluid">
 			<div className="row">

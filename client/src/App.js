@@ -4,7 +4,6 @@ import './App.css';
 import TrackList from './Tracks/containers/TrackList'
 
 class App extends Component {
-
   render() {
     return (
       <div className="App container-fluid">
