@@ -1,6 +1,7 @@
 import React from 'react'
 
 const Player = props => {
+    console.log(props)
     return (
         <div className="trackFile container-fluid">
             <div className="row">
@@ -18,9 +19,9 @@ const Player = props => {
                             <a onClick={props.togglePlay.bind(this)}><i className="playToggle">{props.currentlyPlaying.playOrPause}</i></a>
                             <p><span className="currentTime">{props.currentlyPlaying.currentTime}</span>/<span className="duration">{props.currentlyPlaying.duration}</span></p>
                         </div>
-                        <audio ref="player">
+                        {/* <audio ref="player">
                             <source src={props.currentlyPlaying.trackUrl} />
-                        </audio>
+                        </audio> */}
                     </div>
                 </div>
             </div>

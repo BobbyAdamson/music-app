@@ -7,30 +7,30 @@ import Player from '../components/Player'
 class PlayerContainer extends Component {
     constructor(props) {
         super(props.currentlyPlaying)
-        console.log(props)
+        
+        this.audio = new Audio(props.currentlyPlaying.trackUrl)
     }
 
     togglePlay() {
-        if(!this.props.currentlyPlaying.isPlaying) {
-          this.props.playTrack(this.props.currentlyPlaying.id)
-        } else {
-          this.props.pauseTrack(this.props.currentlyPlaying.id)
-        }
+        console.log(this)
+        console.log(props)
+        // if(!this.props.isPlaying) {
+        //   this.playTrack(this.props.currentlyPlaying.id)
+        // } else {
+        //   this.pauseTrack(this.props.currentlyPlaying.id)
+        // }
     }
 
     calcDuration() {
-        console.log(this)
         return `${parseInt(this.duration / 60)}:${parseInt(this.duration % 60)}`
     }
 
     componentDidUpdate(prevProps, prevState) {
         if(prevProps.currentlyPlaying.isPlaying !== this.props.currentlyPlaying.isPlaying) {
           if(this.props.currentlyPlaying.isPlaying) {
-              console.log('playing')
-            this.refs.player.play()
+              this.audio.play()
           } else {
-              console.log('notplaying')
-            this.refs.player.pause()
+              this.audio.pause()
           }
         }
     }
