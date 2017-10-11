@@ -19,10 +19,5 @@ export default {
             duration: "0:32",
         },
     ],
-    currentTrack: {
-        id: 3,
-        trackUrl: "files/dead.mp3",
-        isPlaying: false,
-        duration: "0:32",
-    },
+    currentTrack: null,
 }
