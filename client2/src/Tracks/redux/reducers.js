@@ -1,9 +1,11 @@
 import {combineReducers} from 'redux'
 
-import { CurrentlyPlaying } from './reducers/CurrentlyPlaying'
+import { currentTrack } from './reducers/CurrentTrack'
+import { trackList } from './reducers/TrackList'
 
 const practiceSpaces = combineReducers({
-    currentlyPlaying: CurrentlyPlaying
+    currentTrack: currentTrack,
+    trackList: trackList
 })
 
 export default practiceSpaces

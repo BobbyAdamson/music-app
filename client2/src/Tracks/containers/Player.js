@@ -6,49 +6,47 @@ import Player from '../components/Player'
 
 class PlayerContainer extends Component {
     constructor(props) {
-        super(props.currentlyPlaying)
+        super(props.currentTrack)
         
-        this.audio = new Audio(props.currentlyPlaying.trackUrl)
-    }
-
-    togglePlay() {
-        console.log(this)
-        console.log(props)
-        // if(!this.props.isPlaying) {
-        //   this.playTrack(this.props.currentlyPlaying.id)
-        // } else {
-        //   this.pauseTrack(this.props.currentlyPlaying.id)
-        // }
+        this.audio = new Audio(props.currentTrack.trackUrl)
     }
 
     calcDuration() {
         return `${parseInt(this.duration / 60)}:${parseInt(this.duration % 60)}`
     }
 
+    audioPlayerListener(audio) {
+        audio.addEventListener('ended', this.props.togglePlay, false)
+    }
+
     componentDidUpdate(prevProps, prevState) {
-        if(prevProps.currentlyPlaying.isPlaying !== this.props.currentlyPlaying.isPlaying) {
-          if(this.props.currentlyPlaying.isPlaying) {
-              this.audio.play()
-          } else {
-              this.audio.pause()
-          }
+        if(prevProps.currentTrack.isPlaying !== this.props.currentTrack.isPlaying) {
+            if(this.props.currentTrack.isPlaying) {
+                this.audio.play()
+            } else {
+                this.audio.pause()
+            }
         }
     }
 
     componentDidMount() {
-        this.props.playTrack(this.props.currentlyPlaying.id)
+        this.props.playTrack(this.props.currentTrack.id)
+
+        this.audioPlayerListener(this.audio)
     }
 
     componentWillUnmount() {
-        this.props.pauseTrack(this.props.currentlyPlaying.id)
+        this.props.pauseTrack(this.props.currentTrack.id)
     }
 
     render() {
         return(
             <Player
-                togglePlay={this.togglePlay}
+                playTrack={this.props.playTrack}
+                pauseTrack={this.props.pauseTrack}
                 calcDuration={this.calcDuration}
-                currentlyPlaying={this.props.currentlyPlaying}
+                currentTrack={this.props.currentTrack}
+                togglePlay={this.props.togglePlay}
             />
         )
     }
@@ -56,7 +54,7 @@ class PlayerContainer extends Component {
 
 function mapStateToProps(state) {
   return {
-    currentlyPlaying: state.currentlyPlaying
+    currentTrack: state.currentTrack
   }
 }
 

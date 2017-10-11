@@ -32,3 +32,8 @@ export const setTrackDuration = (trackId, duration) => {
     }
   }
   
+export const togglePlay = (trackId) => {
+  return {
+    type: PlayerActions.TOGGLE_PLAY
+  }
+}

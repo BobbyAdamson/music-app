@@ -1,3 +1,4 @@
+export const TOGGLE_PLAY = 'TOGGLE_PLAY'
 export const PLAYER_PLAY = 'PLAYER_PLAY'
 export const PLAYER_PAUSE = 'PLAYER_PAUSE'
 export const UPDATE_PROGRESS = 'UPDATE_PROGRESS'

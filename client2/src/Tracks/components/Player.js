@@ -6,7 +6,7 @@ const Player = props => {
         <div className="trackFile container-fluid">
             <div className="row">
                 <div className="col-4">
-                    <h3>{props.currentlyPlaying.title}</h3>
+                    <h3>{props.currentTrack.title}</h3>
                     <p>Uploaded by: Bobby</p>
                     <p>Date uploaded: Oct 5, 2017</p>
                 </div>
@@ -14,14 +14,11 @@ const Player = props => {
                     <div className="playerComponent">
                         <div className="playerController">
                         <div className="progressBarContainer" style={{width: "100%", display: "block"}}>
-                            <div className="progressBar" id="progressBar" style={{width: `${props.currentlyPlaying.progress}%`}}></div>
+                            <div className="progressBar" id="progressBar" style={{width: `${props.currentTrack.progress}%`}}></div>
                         </div>
-                            <a onClick={props.togglePlay.bind(this)}><i className="playToggle">{props.currentlyPlaying.playOrPause}</i></a>
-                            <p><span className="currentTime">{props.currentlyPlaying.currentTime}</span>/<span className="duration">{props.currentlyPlaying.duration}</span></p>
+                            <a onClick={e => {props.togglePlay(props.currentTrack.isPlaying)}}><i className="playToggle">{props.currentTrack.isPlaying ? "Pause" : "Play"}</i></a>
+                            <p><span className="currentTime">{props.currentTrack.currentTime}</span>/<span className="duration">{props.currentTrack.duration}</span></p>
                         </div>
-                        {/* <audio ref="player">
-                            <source src={props.currentlyPlaying.trackUrl} />
-                        </audio> */}
                     </div>
                 </div>
             </div>
